@@ -10,7 +10,9 @@ namespace EmployeePayrollADO_Net
     {
         static void Main(string[] args)
         {
-            EmployeeRepo.CheckConnection();
+            EmployeeRepo employeeRepository = new EmployeeRepo();
+            employeeRepository.CheckConnection();   //UC1 Checking Connectivity Status with the DataBase.
+            employeeRepository.GetAllEmployee();
         }
     }
 }
