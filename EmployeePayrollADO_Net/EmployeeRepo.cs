@@ -110,5 +110,34 @@ namespace EmployeePayrollADO_Net
                 Console.WriteLine(ex.Message);
             }
         }
+        public void UpdateEmployee(EmpModel employee)  //UC4 Updation of existing employee record.
+        {
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("spUpdateEmployeeDetails", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Name", employee.Name);
+                    command.Parameters.AddWithValue("@Id", employee.Id);
+                    command.Parameters.AddWithValue("@Salary", employee.Salary);
+                    int result = command.ExecuteNonQuery();
+                    if (result != 0)
+                    {
+                        Console.WriteLine("Employee updated succcessfully into table");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failure! Unable to Update");
+                    }
+                    this.connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
