@@ -16,6 +16,7 @@ namespace EmployeePayrollADO_Net
             Console.WriteLine("2 - Retrieve All Employees Details from Table in DB");
             Console.WriteLine("3 - Add new Employee Details into the Table");
             Console.WriteLine("4 - Update Salary");
+            Console.WriteLine("5 - Get Employee Records between Date Range.");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
             {
@@ -44,6 +45,9 @@ namespace EmployeePayrollADO_Net
                     employeeModel.Id = 10;
                     employeeModel.Salary = 60000;
                     employeeRepository.UpdateEmployee(employeeModel);   //UC4 Update existing Employee Details
+                    break;
+                case 5:
+                    employeeRepository.FetchEmployeesRecordBetweenGivenDates(); //UC5 Finding employees within date range.
                     break;
                 default:
                     Console.WriteLine("Invaild Option Selected! Try Again Later");
